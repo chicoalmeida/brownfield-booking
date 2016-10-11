@@ -1,7 +1,6 @@
 package com.brownfield.booking.repository;
 
 import com.brownfield.booking.entity.BookingRecord;
-import com.brownfield.booking.entity.Passenger;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
