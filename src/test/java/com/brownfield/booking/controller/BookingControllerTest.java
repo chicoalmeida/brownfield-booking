@@ -9,12 +9,15 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BookingControllerTest {
@@ -32,13 +35,15 @@ public class BookingControllerTest {
 
         BookingRecord bookingRecordFixture = createBookingRecordFixture();
 
-        Mockito.when(bookingService.book(bookingRecordFixture)).thenReturn(Optional.empty());
+        Mockito.when(bookingService.book(bookingRecordFixture)).thenReturn(Optional.of(101010L));
 
-        Long result = target.book(bookingRecordFixture);
+        ResponseEntity<Long> result = target.book(bookingRecordFixture);
+
 
         assertNotNull(result);
+        assertThat(result.getStatusCode(), equalTo(HttpStatus.OK));
 
-        assertThat(result, equalTo(101010));
+        assertThat(result.getBody(), equalTo(101010L));
     }
 
     private BookingRecord createBookingRecordFixture() {

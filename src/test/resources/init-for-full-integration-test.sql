@@ -1,0 +1,10 @@
+INSERT INTO BookingRecord(flightNumber, origin, destination, flightDate, bookingDate, fare, status) VALUES("001", "GUARULHO", "GALEAO", "16-10-2016", "16-10-2016", "100", "WAIT")
+INSERT INTO BookingRecord(flightNumber, origin, destination, flightDate, bookingDate, fare, status) VALUES("002", "GUARULHO", "GALEAO", "17-10-2016", "16-10-2016", "100", "WAIT")
+INSERT INTO BookingRecord(flightNumber, origin, destination, flightDate, bookingDate, fare, status) VALUES("003", "GUARULHO", "GALEAO", "18-10-2016", "16-10-2016", "100", "WAIT")
+INSERT INTO BookingRecord(flightNumber, origin, destination, flightDate, bookingDate, fare, status) VALUES("004", "GUARULHO", "GALEAO", "18-10-2016", "16-10-2016", "100", "WAIT")
+INSERT INTO BookingRecord(flightNumber, origin, destination, flightDate, bookingDate, fare, status) VALUES("005", "GUARULHO", "GALEAO", "20-10-2016", "16-10-2016", "100", "WAIT")
+INSERT INTO BookingRecord(flightNumber, origin, destination, flightDate, bookingDate, fare, status) VALUES("006", "GUARULHO", "GALEAO", "21-10-2016", "16-10-2016", "100", "WAIT")
+INSERT INTO BookingRecord(flightNumber, origin, destination, flightDate, bookingDate, fare, status) VALUES("007", "GUARULHO", "GALEAO", "22-10-2016", "16-10-2016", "100", "WAIT")
+INSERT INTO BookingRecord(flightNumber, origin, destination, flightDate, bookingDate, fare, status) VALUES("008", "GUARULHO", "GALEAO", "23-10-2016", "16-10-2016", "100", "WAIT")
+INSERT INTO BookingRecord(flightNumber, origin, destination, flightDate, bookingDate, fare, status) VALUES("009", "GUARULHO", "GALEAO", "24-10-2016", "16-10-2016", "100", "WAIT")
+
