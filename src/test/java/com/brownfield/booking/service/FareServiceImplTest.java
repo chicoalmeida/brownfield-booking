@@ -23,7 +23,7 @@ public class FareServiceImplTest {
     private FareServiceProxy fareServiceProxy;
 
     @InjectMocks
-    private FareServiceImpl target = new FareServiceImpl();
+    private FareServiceImpl target = new FareServiceImpl(fareServiceProxy);
 
     @Test
     public void validate_GivenAValidBooking_ShouldAcceptFare() throws FareException {
