@@ -1,5 +1,7 @@
 package com.brownfield.booking.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +11,9 @@ import java.util.Set;
 
 @Entity
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class BookingRecord {
 
     @Id
@@ -27,19 +31,6 @@ public class BookingRecord {
     private Set<Passenger> passengers;
 
 
-    private BookingRecord(final String flightNumber, final String origin, final String destination, final String flightDate, final LocalDateTime bookingDate, final String fare, final String status) {
-        this.flightNumber = flightNumber;
-        this.origin = origin;
-        this.destination = destination;
-        this.flightDate = flightDate;
-        this.bookingDate = bookingDate;
-        this.fare = fare;
-        this.status = status;
-    }
-
-    public static BookingRecord createBookingRecord(final String flightNumber, final String origin, final String destination, final String flightDate, final LocalDateTime bookingDate, final String fare, final String status) {
-        return new BookingRecord(flightNumber, origin, destination, flightDate, bookingDate, fare, status);
-    }
 }
 
 

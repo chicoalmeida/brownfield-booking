@@ -1,6 +1,7 @@
 package com.brownfield.booking.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 public class Inventory {
 
     @Id
@@ -22,4 +24,8 @@ public class Inventory {
     private String flightNumber;
     private String flightDate;
     private int available;
+
+    public boolean isAvailable(int count){
+        return ((available-count) >5);
+    }
 }

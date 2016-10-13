@@ -2,6 +2,7 @@ package com.brownfield.booking.controller;
 
 import com.brownfield.booking.entity.BookingRecord;
 import com.brownfield.booking.exception.BookingException;
+import com.brownfield.booking.exception.FareException;
 import com.brownfield.booking.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +22,7 @@ public class BookingController {
     private BookingService bookingService;
 
     @RequestMapping(value="/create" , method = RequestMethod.POST)
-    public ResponseEntity<Long> book(@RequestBody BookingRecord bookingRecord) throws BookingException {
+    public ResponseEntity<Long> book(@RequestBody BookingRecord bookingRecord) throws BookingException, FareException {
 
         ResponseEntity<Long> responseEntity;
         Optional<Long> book = bookingService.book(bookingRecord);

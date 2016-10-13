@@ -20,13 +20,12 @@ public class BookingServiceImpl implements BookingService {
 
     private final BookingRepository bookingRepository;
 
-    private final InventoryRepository inventoryRepository;
+
 
     private final FareService fareService;
 
     @Autowired
-    public BookingServiceImpl(final InventoryRepository inventoryRepository, final BookingRepository bookingRepository, final FareService fareService) {
-        this.inventoryRepository = inventoryRepository;
+    public BookingServiceImpl(final BookingRepository bookingRepository, final FareService fareService) {
         this.bookingRepository = bookingRepository;
         this.fareService = fareService;
     }
@@ -36,7 +35,6 @@ public class BookingServiceImpl implements BookingService {
     public Optional<Long> book(final BookingRecord bookingRecord) throws FareException {
 
         this.fareService.validateFare(bookingRecord);
-        Inventory inventory = inventoryRepository.findByFlightNumberAndFlightDate(bookingRecord.getFlightNumber(),bookingRecord.getFlightDate());
 
         return Optional.of(101010L);
     }

@@ -11,8 +11,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.time.LocalDateTime;
-
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -59,6 +57,12 @@ public class FareServiceImplTest {
 
 
     private BookingRecord createBookingRecordFixture() {
-        return BookingRecord.createBookingRecord("0001", "GUARULHOS", "GALEAO", "16-10-2016", LocalDateTime.now(), "17.90", "AVAILABLE");
+        return BookingRecord.builder()
+                .flightNumber("0001")
+                .flightDate("16-10-2016")
+                .origin("GUARULHOS")
+                .destination("GALEAO")
+                .fare("17.90")
+                .build();
     }
 }
