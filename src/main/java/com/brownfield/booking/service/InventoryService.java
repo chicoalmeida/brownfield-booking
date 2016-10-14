@@ -6,6 +6,6 @@ import com.brownfield.booking.exception.InventoryException;
 
 public interface InventoryService {
 
-    void updateInventory(BookingRecord bookingRecord) throws InventoryException;
+    int updateInventory(BookingRecord bookingRecord) throws InventoryException;
 
 }

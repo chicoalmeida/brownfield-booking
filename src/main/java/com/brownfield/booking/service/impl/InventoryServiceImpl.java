@@ -17,7 +17,7 @@ public class InventoryServiceImpl implements InventoryService {
     private InventoryRepository inventoryRepository;
 
     @Override
-    public void updateInventory(final BookingRecord bookingRecord) throws InventoryException {
+    public int updateInventory(final BookingRecord bookingRecord) throws InventoryException {
         Inventory inventory = inventoryRepository.findByFlightNumberAndFlightDate(bookingRecord.getFlightNumber(), bookingRecord.getFlightDate());
         if (!inventory.isAvailable(bookingRecord.getPassengers().size())) {
             throw new InventoryException("No more seats available");
@@ -28,6 +28,6 @@ public class InventoryServiceImpl implements InventoryService {
         inventory.setAvailable(inventory.getAvailable() - bookingRecord.getPassengers().size());
         inventoryRepository.saveAndFlush(inventory);
         log.info("successfully updated inventory");
-        //save booking
+        return inventory.getBookableInventory();
     }
 }

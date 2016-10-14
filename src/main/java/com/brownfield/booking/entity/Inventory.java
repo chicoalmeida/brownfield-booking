@@ -28,4 +28,8 @@ public class Inventory {
     public boolean isAvailable(int count){
         return ((available-count) >5);
     }
+
+    public int getBookableInventory(){
+        return available - 5;
+    }
 }
