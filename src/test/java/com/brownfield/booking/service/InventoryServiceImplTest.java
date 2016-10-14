@@ -6,13 +6,12 @@ import com.brownfield.booking.entity.Passenger;
 import com.brownfield.booking.exception.InventoryException;
 import com.brownfield.booking.repository.InventoryRepository;
 import com.brownfield.booking.service.impl.InventoryServiceImpl;
-import org.junit.Before;
+import io.swagger.models.auth.In;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.HashSet;
@@ -55,6 +54,20 @@ public class InventoryServiceImplTest {
 
         assertNotNull(inventoryFixture);
         assertThat(inventoryFixture.getAvailable(), equalTo(INVENTORY_AVAILABLE_SEATS_AFTER_INTERACTION));
+
+    }
+
+    @Test(expected = InventoryException.class)
+    public void updateInventory_ShouldThrownExceptionWhenThereIsNoSeatsAvailable() throws InventoryException {
+
+        BookingRecord bookingRecordFixture = createBookingRecordFixture();
+        Inventory inventoryFixture = createInventoryFixture();
+        inventoryFixture.setAvailable(0);
+
+        when(inventoryRepository.findByFlightNumberAndFlightDate(bookingRecordFixture.getFlightNumber(), bookingRecordFixture.getFlightDate()))
+                .thenReturn(inventoryFixture);
+
+        target.updateInventory(bookingRecordFixture);
 
     }
 
