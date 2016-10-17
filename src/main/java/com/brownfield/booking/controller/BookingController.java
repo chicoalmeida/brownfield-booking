@@ -1,8 +1,8 @@
 package com.brownfield.booking.controller;
 
 import com.brownfield.booking.entity.BookingRecord;
-import com.brownfield.booking.exception.BookingException;
 import com.brownfield.booking.exception.FareException;
+import com.brownfield.booking.exception.InventoryException;
 import com.brownfield.booking.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,16 +21,22 @@ public class BookingController {
     @Autowired
     private BookingService bookingService;
 
-    @RequestMapping(value="/create" , method = RequestMethod.POST)
-    public ResponseEntity<Long> book(@RequestBody BookingRecord bookingRecord) throws BookingException, FareException {
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public ResponseEntity<Long> book(@RequestBody BookingRecord bookingRecord) {
 
         ResponseEntity<Long> responseEntity;
-        Optional<Long> book = bookingService.book(bookingRecord);
-
-        if (book.isPresent())
-            responseEntity = new ResponseEntity<>(book.get(), HttpStatus.OK);
-        else
+        Optional<Long> book = null;
+        try {
+            book = bookingService.book(bookingRecord);
+            if (book.isPresent())
+                responseEntity = new ResponseEntity<>(book.get(), HttpStatus.OK);
+            else
+                responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch (FareException | InventoryException e) {
+            e.printStackTrace();
             responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
 
         return responseEntity;
     }
