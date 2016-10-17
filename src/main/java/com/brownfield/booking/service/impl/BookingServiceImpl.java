@@ -46,12 +46,24 @@ public class BookingServiceImpl implements BookingService {
     public Optional<Long> book(final BookingRecord bookingRecord) throws FareException, InventoryException {
 
         this.fareService.validateFare(bookingRecord);
+
         int totalSeatsAvailable = this.inventoryService.updateInventory(bookingRecord);
 
         Optional<Long> bookedId = this.bookValidRequest(bookingRecord);
+
         this.sendMessageToUpdateSearchInventory(bookingRecord, totalSeatsAvailable);
 
         return bookedId;
+    }
+
+    @Override
+    public void updateStatus(String status, long bookingId) {
+        BookingRecord record = bookingRepository.findOne(bookingId);
+        if(record == null) {
+            log.info("NO BOOKING FOUND, ignoring FOR BOOKING ID.." + bookingId);
+        }else {
+            record.setStatus(status);
+        }
     }
 
     private Optional<Long> bookValidRequest(final BookingRecord bookingRecord) {

@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface BookingService {
 
     Optional<Long> book(BookingRecord bookingRecord) throws FareException, InventoryException;
+    void updateStatus(String status, long bookingId);
 }

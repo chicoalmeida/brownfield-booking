@@ -25,7 +25,7 @@ public class BookingController {
     public ResponseEntity<Long> book(@RequestBody BookingRecord bookingRecord) {
 
         ResponseEntity<Long> responseEntity;
-        Optional<Long> book = null;
+        Optional<Long> book;
         try {
             book = bookingService.book(bookingRecord);
             if (book.isPresent())
