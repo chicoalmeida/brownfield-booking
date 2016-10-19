@@ -66,6 +66,11 @@ public class BookingServiceImpl implements BookingService {
         }
     }
 
+    @Override
+    public BookingRecord getBooking(final long id) {
+        return bookingRepository.findOne(id);
+    }
+
     private Optional<Long> bookValidRequest(final BookingRecord bookingRecord) {
         bookingRecord.setStatus(BookingStatus.BOOKING_CONFIRMED);
         Set<Passenger> passengers = bookingRecord.getPassengers();

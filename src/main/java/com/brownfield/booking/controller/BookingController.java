@@ -40,4 +40,9 @@ public class BookingController {
 
         return responseEntity;
     }
+
+    @RequestMapping("/get/{id}")
+    BookingRecord getBooking(@PathVariable long id){
+        return bookingService.getBooking(id);
+    }
 }
