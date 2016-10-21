@@ -3,7 +3,6 @@ package com.brownfield.booking.service.impl;
 import com.brownfield.booking.entity.BookingRecord;
 import com.brownfield.booking.exception.FareException;
 import com.brownfield.booking.model.Fare;
-import com.brownfield.booking.proxy.FareServiceProxy;
 import com.brownfield.booking.service.FareService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +17,10 @@ import org.springframework.stereotype.Component;
 public class FareServiceImpl implements FareService {
 
 
-    private FareServiceProxy fareServiceProxy;
+    private final FareServiceProxy fareServiceProxy;
 
     @Autowired
-    public FareServiceImpl(FareServiceProxy fareServiceProxy) {
+    public FareServiceImpl(final FareServiceProxy fareServiceProxy) {
         this.fareServiceProxy = fareServiceProxy;
     }
 

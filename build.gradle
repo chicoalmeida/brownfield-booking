@@ -23,6 +23,7 @@ targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 
@@ -42,7 +43,6 @@ dependencies {
     compile('org.springframework.cloud:spring-cloud-starter-config')
     compile('org.springframework.cloud:spring-cloud-starter-feign')
     compile('org.springframework.cloud:spring-cloud-starter-eureka')
-    compile('org.springframework.cloud:spring-cloud-starter-ribbon')
     compile('org.springframework.cloud:spring-cloud-starter-stream-rabbit')
     compile('io.springfox:springfox-swagger2:2.3.1')
     compile('io.springfox:springfox-swagger-ui:2.3.1')
@@ -51,11 +51,12 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile('com.github.springtestdbunit:spring-test-dbunit:1.2.1')
     testCompile('org.dbunit:dbunit:2.5.1')
+    testCompile('com.github.geowarin:docker-junit-rule:1.1.0')
 
 }
 
 dependencyManagement {
     imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Brixton.RELEASE"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Camden.RELEASE"
     }
 }

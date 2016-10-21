@@ -33,7 +33,6 @@ public class BookingController {
             else
                 responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (FareException | InventoryException e) {
-            e.printStackTrace();
             responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 

@@ -19,7 +19,7 @@ public class InventoryServiceImpl implements InventoryService {
     @Override
     public int updateInventory(final BookingRecord bookingRecord) throws InventoryException {
         Inventory inventory = inventoryRepository.findByFlightNumberAndFlightDate(bookingRecord.getFlightNumber(), bookingRecord.getFlightDate());
-        if (!inventory.isAvailable(bookingRecord.getPassengers().size())) {
+        if (inventory == null || !inventory.isAvailable(bookingRecord.getPassengers().size())) {
             throw new InventoryException("No more seats available");
         }
         log.info("successfully checked inventory" + inventory);

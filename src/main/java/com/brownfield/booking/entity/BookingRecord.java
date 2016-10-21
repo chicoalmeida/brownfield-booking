@@ -30,7 +30,6 @@ public class BookingRecord {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "bookingRecord")
     private Set<Passenger> passengers;
 
-
 }
 
 
