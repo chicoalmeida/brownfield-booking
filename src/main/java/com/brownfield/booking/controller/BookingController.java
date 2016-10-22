@@ -22,18 +22,17 @@ public class BookingController {
     private BookingService bookingService;
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<Long> book(@RequestBody BookingRecord bookingRecord) {
+    public ResponseEntity<String> book(@RequestBody BookingRecord bookingRecord) {
 
-        ResponseEntity<Long> responseEntity;
+        ResponseEntity<String> responseEntity;
         Optional<Long> book;
         try {
             book = bookingService.book(bookingRecord);
-            if (book.isPresent())
-                responseEntity = new ResponseEntity<>(book.get(), HttpStatus.OK);
-            else
-                responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            responseEntity = book
+                    .map(b-> new ResponseEntity<>(b.toString(), HttpStatus.OK))
+                    .orElseThrow(()-> new InventoryException("No More Seats Available"));
         } catch (FareException | InventoryException e) {
-            responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            responseEntity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
 
 

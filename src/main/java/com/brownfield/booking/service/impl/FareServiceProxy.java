@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "fares-service")
+@FeignClient(name = "fares-apigateway/api")
 public interface FareServiceProxy {
 
     @RequestMapping(value = "fares/get", method = RequestMethod.GET)

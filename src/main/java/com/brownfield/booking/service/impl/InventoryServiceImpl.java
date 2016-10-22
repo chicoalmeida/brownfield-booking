@@ -20,6 +20,7 @@ public class InventoryServiceImpl implements InventoryService {
     public int updateInventory(final BookingRecord bookingRecord) throws InventoryException {
         Inventory inventory = inventoryRepository.findByFlightNumberAndFlightDate(bookingRecord.getFlightNumber(), bookingRecord.getFlightDate());
         if (inventory == null || !inventory.isAvailable(bookingRecord.getPassengers().size())) {
+            log.info("No more seats available");
             throw new InventoryException("No more seats available");
         }
         log.info("successfully checked inventory" + inventory);
