@@ -59,9 +59,9 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void updateStatus(String status, long bookingId) {
         BookingRecord record = bookingRepository.findOne(bookingId);
-        if(record == null) {
+        if (record == null) {
             log.info("NO BOOKING FOUND, ignoring FOR BOOKING ID.." + bookingId);
-        }else {
+        } else {
             record.setStatus(status);
         }
     }
