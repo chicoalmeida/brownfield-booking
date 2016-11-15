@@ -30,6 +30,16 @@ public class  BookingRecord {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "bookingRecord")
     private Set<Passenger> passengers;
 
+    public BookingRecord(String flightNumber, String from, String to,
+                         String flightDate, LocalDateTime bookingDate, String fare) {
+        this.flightNumber = flightNumber;
+        this.origin = from;
+        this.destination = to;
+        this.flightDate = flightDate;
+        this.bookingDate = bookingDate;
+        this.fare = fare;
+
+    }
 }
 
 

@@ -26,6 +26,7 @@ public class Inventory {
     @Column(name = "AVAILABLE")
     private int available;
 
+
     public boolean isAvailable(int count) {
         return ((available - count) > 5);
     }

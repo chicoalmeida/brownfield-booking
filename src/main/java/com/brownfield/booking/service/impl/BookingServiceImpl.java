@@ -17,10 +17,7 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @EnableFeignClients
 @RefreshScope
@@ -69,6 +66,11 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public BookingRecord getBooking(final long id) {
         return bookingRepository.findOne(id);
+    }
+
+    @Override
+    public List<BookingRecord> getAllBookings() {
+        return this.bookingRepository.findAll();
     }
 
     private Optional<Long> bookValidRequest(final BookingRecord bookingRecord) {

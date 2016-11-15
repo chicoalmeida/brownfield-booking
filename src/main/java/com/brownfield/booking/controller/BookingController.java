@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -42,5 +43,10 @@ public class BookingController {
     @RequestMapping("/get/{id}")
     BookingRecord getBooking(@PathVariable long id){
         return bookingService.getBooking(id);
+    }
+
+    @RequestMapping("/all")
+    List<BookingRecord> getAll(){
+        return bookingService.getAllBookings();
     }
 }

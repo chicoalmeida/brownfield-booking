@@ -4,6 +4,7 @@ import com.brownfield.booking.entity.BookingRecord;
 import com.brownfield.booking.exception.FareException;
 import com.brownfield.booking.exception.InventoryException;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface BookingService {
@@ -12,4 +13,6 @@ public interface BookingService {
     void updateStatus(String status, long bookingId);
 
     BookingRecord getBooking(long id);
+
+    List<BookingRecord> getAllBookings();
 }
